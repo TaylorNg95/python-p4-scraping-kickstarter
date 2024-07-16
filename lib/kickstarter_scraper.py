@@ -13,6 +13,7 @@ def create_project_dict():
     with open('./fixtures/kickstarter.html') as file:
         html = file.read()
     kickstarter = BeautifulSoup(html, 'html.parser')
+    ipdb.set_trace()
     projects = {}
     # Iterate through the projects
     for project in kickstarter.select("li.project.grid_4"):
@@ -23,6 +24,7 @@ def create_project_dict():
         'location': project.select("ul.project-meta span.location-name")[0].text,
         'percent_funded': project.select("ul.project-stats li.first.funded strong")[0].text.replace("%","")
         }
+    return projects
     # return the projects dictionary
 
     return projects
